@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <style>
+          body {
+              font-size: 14px;
+          }
+
+          fieldset {
+            margin-bottom: 6px;
+          }
+
+          fieldset legend {
+            font-style: italic;
+          }
+
+          p {
+            margin: 0;
+          }
+
+          
+
+      </style>
+  </head>
+
+  <body>
+      <fieldset>
+          <legend>Contact Information</legend>
+          <label for="fname">First name: </label>
+          <input type="text" name="fname" id="fname" required>
+          <br/>
+          <label for="lname">Last name: </label>
+          <input type="text" name="lname" id="lname" required>
+          <br/>
+          <label for="mail">E-mail: </label>
+          <input type="email" name="email" id="email" required>
+      </fieldset>
+
+      <fieldset>
+          <legend>Competition Question</legend>
+          <p>How tall is the Eiffel Tower in Paris, France?</p>
+          <p><input type="radio"  name="ans"> 584ft</p>
+          <input type="radio"  name="ans"> 784ft</p>
+          <input type="radio"  name="ans"> 984ft</p>
+          <input type="radio"  name="ans"> 1184ft</p>
+      </fieldset>
+
+      <fieldset>
+          <legend>Tiebreaker Question</legend>
+          <p>In 25 words or less, say why you would like to win $10,000:</p>
+          <textarea rows="10" cols="50"></textarea>
+      </fieldset>
+
+      <fieldset>
+          <legend>Enter Competition</legend>
+          <input type="submit" value="Enter Competition" />
+      </fieldset>
+
+  </body>
+</html>
