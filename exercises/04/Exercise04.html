@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+  <head></head>
+  <body>
+    <div id="maincontainer"></div>
+    <script>
+      const maincontainer = document.getElementById("maincontainer");
+      document.body.style.height = "1600px";
+
+      const topic = document.createElement("h1");
+      topic.innerHTML = "Exercise 04 : JavaScript&DOM ";
+      maincontainer.appendChild(topic);
+
+      const dateDiv = document.createElement("div");
+      dateDiv.style.height = "30px";
+
+      const dateButton = document.createElement("Button");
+      dateButton.textContent = "Click me to display Date and Time";
+      dateButton.setAttribute(
+        "style",
+        "padding: 5px 10px; border: 1px solid gray; border-radius: 5px;"
+      );
+      dateDiv.appendChild(dateButton);
+
+      const colors = ["red", "orange", "black", "green", "blue", "purple"];
+
+      let intervalId;
+      const worker = new Worker("time-worker.js");
+
+      dateButton.onclick = () => {
+        if (dateButton.style.position != "fixed") {
+          worker.postMessage(undefined);
+          worker.onmessage = (event) => {
+            dateButton.style.position = "fixed";
+            dateButton.style.top = "1px";
+            dateButton.style.right = "1px";
+            dateButton.style.color = "white";
+            dateButton.style.backgroundColor =
+              colors[event.data.getSeconds() % colors.length];
+            dateButton.style.border = "1px  solid black";
+            dateButton.textContent = event.data;
+          };
+        } else {
+          worker.onmessage = () => {
+            worker.postMessage("stop");
+            dateButton.style.position = "static";
+            clearInterval(intervalId);
+          };
+        }
+      };
+
+      maincontainer.appendChild(dateDiv);
+
+      const personalDiv = document.createElement("div");
+      const personalInfo = document.createElement("p");
+      personalInfo.innerHTML = "Personal Info";
+      personalInfo.style.display = "inline-block";
+      personalInfo.style.color = "blue";
+      personalInfo.style.textDecoration = "underline";
+      personalInfo.style.marginTop = "22px";
+      personalInfo.style.marginBottom = "0px";
+      personalInfo.addEventListener("mouseover", () => {
+        personalInfo.style.backgroundColor = "yellow";
+        personalInfo.style.cursor = "pointer";
+      });
+      personalInfo.addEventListener("mouseleave", () => {
+        personalInfo.style.backgroundColor = "transparent";
+      });
+      personalDiv.appendChild(personalInfo);
+      maincontainer.appendChild(personalDiv);
+
+      personalInfo.onclick = () => {
+        let infoList = personalDiv.querySelector("ul");
+        if (!infoList) {
+          infoList = document.createElement("ul");
+          let infoItems1 = document.createElement("li");
+          infoItems1.textContent = "Ammari Thaowan, ID: 64011013";
+          infoList.appendChild(infoItems1);
+          let infoItems2 = document.createElement("li");
+          infoItems2.textContent = "Subject: Web Application Development";
+          infoList.appendChild(infoItems2);
+          let infoItems3 = document.createElement("li");
+          infoItems3.textContent = "Semester: 2/2565";
+          infoList.appendChild(infoItems3);
+
+          personalDiv.appendChild(infoList);
+        } else {
+          personalDiv.removeChild(infoList);
+        }
+      };
+
+      const snapDiv = document.createElement("div");
+      const snapList = document.createElement("ul");
+      maincontainer.appendChild(snapDiv);
+      snapDiv.innerHTML = "<h1>Snapshots</h1>";
+      
+      snapDiv.appendChild(snapList);
+      const itemName = ["Firework", "Crest", "Action", "Buffalo"];
+      
+      itemName.forEach((name, i) => {
+        const li = document.createElement("li");
+        const a = document.createElement("a");
+        a.textContent = name;
+        a.setAttribute(
+          "style",
+          "color:blue; text-decoration:underline; cursor:pointer"
+        );
+        a.addEventListener("mouseover", () => (a.style.opacity = 0.5));
+        a.addEventListener("mouseleave", () => (a.style.opacity = 1));
+        li.appendChild(a);
+        snapList.appendChild(li);
+        a.onclick = () => {
+          if (i === 0) {
+            footerIMG.src =
+              "https://www.ontariosciencecentre.ca/media/2098/fireworksheader3.jpg";
+          } else if (i === 1) {
+            footerIMG.src =
+              "https://m.media-amazon.com/images/I/713XPo-M9sL.jpg";
+          } else if (i === 2) {
+            footerIMG.src =
+              "https://yanivshoval.files.wordpress.com/2015/05/action-istock_000018662891small.jpg";
+          } else if (i === 3) {
+            footerIMG.src =
+              "https://a-z-animals.com/media/2021/07/Heaviest-Animals_-Bovini.jpg";
+          }
+        };
+      });
+
+      
+
+      const footerIMG = document.createElement("img");
+      footerIMG.setAttribute(
+        "src",
+        "https://www.ce.kmitl.ac.th/api/main/banner/download/1"
+      );
+      footerIMG.setAttribute("style", "width:50%");
+      maincontainer.appendChild(footerIMG);
+
+      document.body.appendChild(maincontainer);
+    </script>
+  </body>
+</html>
