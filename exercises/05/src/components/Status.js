@@ -4,7 +4,7 @@ import "./Status.css";
 class Status extends Component {
   render() {
     return (
-      <div class="">
+      <div class="count">
         {this.props.count}
       </div>
     )
