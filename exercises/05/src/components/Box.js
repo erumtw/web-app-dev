@@ -26,15 +26,14 @@ class MenuBox extends Component {
     else if (count <= 0) {
       return "MIN";
     }
-    else {
-      return count;
-    }
+    
+    return count;
   }
 
   render() {
     return (
-      <div class="container">
-        <div class='top-section'>
+      <div className="container">
+        <div className='top-section'>
           <div>
             <h2>{this.props.foodType}</h2>
             <p><strong>{this.props.menuName}</strong></p>
@@ -44,7 +43,7 @@ class MenuBox extends Component {
             <img src={this.props.src} alt="foods" />
           </div>
         </div>
-        <div class='bt-section'>
+        <div className='bt-section'>
           <Bt title="Click to Vote" parentCallback={this.handleCallback} />
           <Status count={this.statusDisplay(this.state.count)} />
           <Bt title="Click to Unvote" parentCallback={this.handleCallback} />

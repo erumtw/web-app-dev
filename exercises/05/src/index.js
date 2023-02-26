@@ -25,7 +25,7 @@ const menus = {
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <div class="main-container">
+  <div className="main-container">
     <h1>โหวตอาหาร</h1>
     <MenuBox
       foodType={menus.menu1.type}
