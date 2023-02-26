@@ -1,0 +1,24 @@
+.container {
+  padding: 15px 20px;
+  display: flex;
+  flex-direction: column;
+  background-color: bisque;
+  border: 1px solid black;
+  border-radius: 8px;
+  width: 60%;
+  margin-bottom: 10px;
+}
+
+.top-section {
+  display: flex;
+}
+
+.top-section img {
+  width: 200px;
+}
+
+.bt-section {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+}

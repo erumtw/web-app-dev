@@ -55,16 +55,19 @@
       const personalInfo = document.createElement("p");
       personalInfo.innerHTML = "Personal Info";
       personalInfo.style.display = "inline-block";
-      personalInfo.style.color = "blue";
+      personalInfo.style.color = "pink";
       personalInfo.style.textDecoration = "underline";
       personalInfo.style.marginTop = "22px";
       personalInfo.style.marginBottom = "0px";
+
       personalInfo.addEventListener("mouseover", () => {
         personalInfo.style.backgroundColor = "yellow";
+        personalInfo.style.color = "purple";
         personalInfo.style.cursor = "pointer";
       });
       personalInfo.addEventListener("mouseleave", () => {
         personalInfo.style.backgroundColor = "transparent";
+        personalInfo.style.color = "pink";
       });
       personalDiv.appendChild(personalInfo);
       maincontainer.appendChild(personalDiv);
