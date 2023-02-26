@@ -1,12 +1,14 @@
 import { Component } from "react";
 import "./Status.css";
 
-const Status = (props) => {
+class Status extends Component {
+  render() {
     return (
-      <div class="count">
+      <div class="">
         {this.props.count}
       </div>
     )
+  }
 }
 
 export default Status;

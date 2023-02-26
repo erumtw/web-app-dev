@@ -26,7 +26,7 @@ class MenuBox extends Component {
     else if (count <= 0) {
       return "MIN";
     }
-    
+
     return count;
   }
 

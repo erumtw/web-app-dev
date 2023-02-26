@@ -32,7 +32,7 @@ root.render(
       menuName={menus.menu1.name}
       describtion={menus.menu1.described}
       src={menus.menu1.imgsrc} />
-      
+
     <MenuBox
       foodType={menus.menu2.type}
       menuName={menus.menu2.name}
